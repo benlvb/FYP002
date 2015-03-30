@@ -13,12 +13,14 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
+gem 'awesome_print',require:"ap"
 
 group :development, :test do
   gem 'mysql2'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'quiet_assets'
 end
 
 group :production do
