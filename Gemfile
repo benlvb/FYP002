@@ -14,6 +14,8 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'awesome_print',require:"ap"
+gem 'simple_form'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'mysql2'

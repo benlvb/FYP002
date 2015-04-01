@@ -1,0 +1,9 @@
+<h1><%= @request.title %></h1>
+<p><%= @request.matric_no %></p>
+<p><%= @request.phone_no %></p>
+<p><%= @request.rate %></p>
+<p><%= @request.description %></p>
+
+<%= link_to 'Home', root_path %>
+<%= link_to 'Edit', edit_request_path %>
+<%= link_to 'Delete', request_path(@request), method: :delete, data: { confirm: "Are you sure?"} %>
