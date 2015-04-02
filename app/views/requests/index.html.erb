@@ -6,8 +6,6 @@
 <% else %>
 <%= link_to 'Sign Out', destroy_user_session_path, method: "delete" %>
 
-<% end %>
-
 <% @requests.each do |request| %>
 
 	<h2><%= link_to request.title, request %></h2>
@@ -17,3 +15,5 @@
 <% end %>
 
 <%= link_to 'New Request', new_request_path %>
+
+<% end %>
