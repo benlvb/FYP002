@@ -1,4 +1,5 @@
 <%= simple_form_for @request do |f| %>
+	<%= f.collection_select :category_id, Category.all, :id, :name, {promt: "Choose a category" } %>
 	<%= f.input :title, label: "Title", placeholder: "Title" %>
 	<%= f.input :matric_no, label: "Matrics Number", placeholder: "B012345678" %>
 	<%= f.input :phone_no, label: "Phone Number (MY)", placeholder: "0123456789" %>

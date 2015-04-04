@@ -16,6 +16,7 @@ gem 'omniauth-google-oauth2'
 gem 'awesome_print',require:"ap"
 gem 'simple_form'
 gem 'bootstrap-sass'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'mysql2'

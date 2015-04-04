@@ -1,20 +1,26 @@
 class RequestsController < ApplicationController
-
 before_action :find_request, only: [:show, :edit, :update, :destroy]
+before_action :authenticate_user!, except: [:index, :show]
 
 	def index
-		@requests = Request.all.order("created_at DESC")
+		if params[:category].blank?
+			@requests = Request.all.order("created_at DESC")
+		else
+			@category_id = Category.find_by(name: params[:category]).id
+			@requests = Request.where(category_id: @category_id).order("created_at DESC")
+		end
 	end
 
 	def show
+		@category = Category.find(Request.find(params[:id]).category_id)
 	end
 
 	def new
-		@request = Request.new
+		@request = current_user.requests.build
 	end
 
 	def create
-		@request = Request.new(requests_params)
+		@request = current_user.requests.build(requests_params)
 		if @request.save
 			redirect_to @request
 		else
@@ -41,7 +47,7 @@ before_action :find_request, only: [:show, :edit, :update, :destroy]
 	private
 
 	def requests_params
-		params.require(:request).permit(:title, :matric_no, :phone_no, :rate, :description)
+		params.require(:request).permit(:title, :matric_no, :phone_no, :rate, :description, :category_id)
 	end
 
 	def find_request
