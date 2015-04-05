@@ -13,6 +13,7 @@ before_action :authenticate_user!, except: [:index, :show]
 
 	def show
 		@category = Category.find(Request.find(params[:id]).category_id)
+		@comments = Comment.where(request_id: @request)
 	end
 
 	def new

@@ -6,6 +6,18 @@
 <p><%= @request.description %></p>
 <p><%= @request.user.name %></p>
 
+
+<h2><%= pluralize(@request.comments.count, "Comment") %></h2>
+
+<% @comments.each do |comment| %>
+
+	<p><%= comment.user.name %></p>
+	<p><%= comment.content %></p>
+	
+<% end %>
+
+<%= render 'comments/form' %>
+
 <%= link_to 'Home', root_path %>
 <%= link_to 'Edit', edit_request_path %>
 <%= link_to 'Delete', request_path(@request), method: :delete, data: { confirm: "Are you sure?"} %>
