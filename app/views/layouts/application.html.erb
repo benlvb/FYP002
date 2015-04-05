@@ -7,9 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	
+	<%= link_to "All Requests", root_path %>
 	<% Category.all.each do |category| %>
 		<%= link_to category.name, requests_path(category: category.name) %>
 	<% end %>
+
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
 
