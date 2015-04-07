@@ -23,7 +23,7 @@ before_action :authenticate_user!, except: [:index, :show]
 	def create
 		@request = current_user.requests.build(requests_params)
 		if @request.save
-			redirect_to @request
+			redirect_to @request, flash: { success: 'Request has been created!' }
 		else
 			render 'new'
 		end
@@ -34,7 +34,7 @@ before_action :authenticate_user!, except: [:index, :show]
 
 	def update
 		if @request.update(requests_params)
-			redirect_to @request
+			redirect_to @request, flash: { success: 'Request has been updated!' }
 		else
 			render 'edit'
 		end

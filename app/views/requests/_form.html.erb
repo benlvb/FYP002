@@ -1,10 +1,24 @@
-<%= simple_form_for @request, url: requests_path do |f| %>
+<%= simple_form_for @request, :html => { :multipart => true } do |f| %>
+
 	<%= f.collection_select :category_id, Category.all, :id, :name, {promt: "Choose a category" } %>
-	<%= f.input :image, as: :file, label: "Image" %>
+
+	<br />
+
+	<%= f.label :image, 'Image' %>
+	<%= f.file_field :image, as: :file %>
+	<% if @request.image? %>
+		<%= image_tag @request.image.url(:medium) %>
+	<% end %>
+
 	<%= f.input :title, label: "Title", placeholder: "Title" %>
+
 	<%= f.input :matric_no, label: "Matrics Number", placeholder: "B012345678" %>
+
 	<%= f.input :phone_no, label: "Phone Number (MY)", placeholder: "0123456789" %>
+
 	<%= f.input :rate, label: "Rate per hour/day", placeholder: "20.00" %>
+
 	<%= f.input :description, label: "Description", placeholder: "Tell us more" %>
+
 	<%= f.button :submit %>
 <% end %>
