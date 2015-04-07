@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   root 'requests#index'
 
   resources :requests do
+  	member do
+  		get "like", to: "requests#upvote"
+  		get "dislike", to: "requests#downvote"
+  	end
   	resources :comments
   end
 

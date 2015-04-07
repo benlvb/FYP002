@@ -4,15 +4,17 @@
 <%= link_to 'Sign In', new_user_session_path %>
 
 <% else %>
-<%= link_to 'Sign Out', destroy_user_session_path, method: "delete" %>
+<%= link_to 'Sign Out', destroy_user_session_path, method: "delete" %> <br />
 
 <% @requests.each do |request| %>
-
+	<%= link_to (image_tag request.image.url(:medium)), request %>
 	<h2><%= link_to request.title, request %></h2>
-	<p><%= request.rate %></p>
-	<p><%= request.description %></p>
+	<p>Submitted by <%= request.user.name %></p>
 	<p><%= request.comments.count %> Comments</p>
-
+	<p><%= request.get_upvotes.size %> Likes</p>
+	<p><%= request.get_downvotes.size %> Likes</p>
+	
+	<br />
 <% end %>
 
 <%= link_to 'New Request', new_request_path %>

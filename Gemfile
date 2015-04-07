@@ -16,7 +16,8 @@ gem 'omniauth-google-oauth2'
 gem 'awesome_print',require:"ap"
 gem 'simple_form'
 gem 'bootstrap-sass'
-gem 'carrierwave'
+gem 'paperclip'
+gem 'acts_as_votable', '~> 0.10.0'
 
 group :development, :test do
   gem 'mysql2'

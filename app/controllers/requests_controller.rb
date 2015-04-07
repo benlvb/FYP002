@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-before_action :find_request, only: [:show, :edit, :update, :destroy]
+before_action :find_request, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 before_action :authenticate_user!, except: [:index, :show]
 
 	def index
@@ -45,10 +45,20 @@ before_action :authenticate_user!, except: [:index, :show]
 		redirect_to root_path
 	end
 
+	def upvote
+		@request.upvote_by current_user
+		redirect_to :back
+	end
+
+	def downvote
+		@request.downvote_by current_user
+		redirect_to :back
+	end
+
 	private
 
 	def requests_params
-		params.require(:request).permit(:title, :matric_no, :phone_no, :rate, :description, :category_id)
+		params.require(:request).permit(:title, :matric_no, :phone_no, :rate, :description, :category_id, :image)
 	end
 
 	def find_request

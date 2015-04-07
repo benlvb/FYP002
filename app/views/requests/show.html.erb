@@ -1,10 +1,16 @@
+<%= image_tag @request.image.url(:medium) %>
 <h1><%= @request.title %></h1>
 <p><%= @category.name %></p>
 <p><%= @request.matric_no %></p>
 <p><%= @request.phone_no %></p>
 <p><%= @request.rate %></p>
 <p><%= @request.description %></p>
-<p><%= @request.user.name %></p>
+<p>Submitted by <%= @request.user.name %></p>
+
+<p><%= @request.get_upvotes.size %> Likes</p>
+<p><%= @request.get_downvotes.size %> Dislikes</p>
+<%= link_to "Like", like_request_path(@request), method: :get %>
+<%= link_to "Dislike", dislike_request_path(@request), method: :get %>
 
 
 <h2><%= pluralize(@request.comments.count, "Comment") %></h2>
@@ -18,6 +24,5 @@
 
 <%= render 'comments/form' %>
 
-<%= link_to 'Home', root_path %>
 <%= link_to 'Edit', edit_request_path %>
 <%= link_to 'Delete', request_path(@request), method: :delete, data: { confirm: "Are you sure?"} %>
