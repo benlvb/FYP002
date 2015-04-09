@@ -8,4 +8,7 @@ class Request < ActiveRecord::Base
 
   	acts_as_votable
 
+  	# attr_accessor :image
+  	 attr_accessor :image_file_name
+
 end
