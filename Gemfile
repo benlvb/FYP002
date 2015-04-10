@@ -18,7 +18,7 @@ gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'paperclip'
 gem 'acts_as_votable', '~> 0.10.0'
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 group :development, :test do
   gem 'mysql2'
