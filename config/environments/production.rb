@@ -80,9 +80,10 @@ Rails.application.configure do
   config.paperclip_defaults = {
   :storage => :s3,
   :s3_credentials => {
-    :bucket => ENV['rentalmarketplace'],
-    :access_key_id => ENV['AKIAJO5UTSRLEIV7GYGQ'],
-    :secret_access_key => ENV['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']
-  }
+    :bucket => "rentalmarketplace",
+    :access_key_id => "AKIAJO5UTSRLEIV7GYGQ",
+    :secret_access_key => "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"
+  },
+  url: "http://rentalmarketplace.s3-website-ap-southeast-1.amazonaws.com/"
 }
 end
