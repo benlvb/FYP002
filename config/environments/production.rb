@@ -83,7 +83,6 @@ Rails.application.configure do
     :bucket => "rentalmarketplace",
     :access_key_id => "AKIAJO5UTSRLEIV7GYGQ",
     :secret_access_key => "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"
-  },
-  url: "rentalmarketplace.s3.amazonaws.com"
+  }
 }
 end
