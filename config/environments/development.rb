@@ -41,9 +41,11 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   config.paperclip_defaults = {
-  :storage => :s3,
-  :s3_credentials => {
-    :bucket => "rentalmarketplace"
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => "rentalmarketplace",
+      :access_key_id => "AKIAJO5UTSRLEIV7GYGQ",
+      :secret_access_key => "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"
+    }
   }
-}
 end
