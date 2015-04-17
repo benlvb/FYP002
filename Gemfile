@@ -19,6 +19,7 @@ gem 'bootstrap-sass'
 gem 'paperclip'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'aws-sdk', '< 2.0'
+gem 'nested_form'
 
 group :development, :test do
   gem 'mysql2'
