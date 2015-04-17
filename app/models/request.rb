@@ -13,4 +13,5 @@ class Request < ActiveRecord::Base
   	acts_as_votable
 
   	accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => proc { |attrs| attrs['image'].blank? }
+  	
 end
