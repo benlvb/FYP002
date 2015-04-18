@@ -44,8 +44,8 @@ Rails.application.configure do
     :storage => :s3,
     :s3_credentials => {
       :bucket => "rentalmarketplace",
-      :access_key_id => "AKIAINVC57OYLAMHSBMA",
-      :secret_access_key => "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"
+      :access_key_id => ENV["AWSS3_KEY"],
+      :secret_access_key => ENV["AWSS3_SECRET"]
     },
     :s3_protocol => :https
   }
