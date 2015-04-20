@@ -16,9 +16,9 @@ gem 'omniauth-google-oauth2'
 gem 'awesome_print',require:"ap"
 gem 'simple_form'
 gem 'bootstrap-sass'
+gem 'aws-sdk', '< 2.0'
 gem 'paperclip'
 gem 'acts_as_votable', '~> 0.10.0'
-gem 'aws-sdk', '< 2.0'
 gem 'nested_form'
 
 group :development, :test do
