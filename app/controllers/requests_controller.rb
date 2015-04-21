@@ -58,7 +58,7 @@ before_action :authenticate_user!, except: [:index, :show]
 	private
 
 	def requests_params
-		params.require(:request).permit(:title, :matric_no, :phone_no, :rate, :description, :category_id, :image, tasks_attributes: [:id, :image, :_destroy])
+		params.require(:request).permit(:title, :matric_no, :phone_no, :rate, :description, :category_id, images_attributes: [:id, :name, :_destroy])
 	end
 
 	def find_request

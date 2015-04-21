@@ -1,12 +1,12 @@
-<%= simple_nested_form_for @request, :html => { :multipart => true } do |f| %>
+<%= simple_nested_form_for @request, :html => { :multipart => true }, url: requests_path do |f| %>
 
 	<%= f.collection_select :category_id, Category.all, :id, :name, {promt: "Choose a category" } %>
 
 	<br />
 
-	<%= f.fields_for :image do |image| %>
-	  <%= task_form.text_field :image %>
-	  <%= task_form.link_to_remove "Remove this Image" %>
+	<%= f.fields_for :images do |image| %>
+	  <%= image.text_field :image %>
+	  <%= image.link_to_remove "Remove this Image" %>
 	<% end %>
 	<p><%= f.link_to_add "Add an Image", :image %></p>
 
