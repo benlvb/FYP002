@@ -22,9 +22,6 @@ before_action :authenticate_user!, except: [:index, :show]
 
 	def create
 		@request = current_user.requests.build(requests_params)
-		if !params[:pictures_attributes][:image].blank?
-			@request.pictures.create(image: params[:pictures_attributes][:image])
-		end
 		if @request.save
 			redirect_to @request, flash: { success: 'Request has been created!' }
 		else
@@ -61,7 +58,7 @@ before_action :authenticate_user!, except: [:index, :show]
 	private
 
 	def requests_params
-		params.require(:request).permit(:title, :matric_no, :phone_no, :rate, :description, :category_id, pictures_attributes: [:id, :image, :_destroy])
+		params.require(:request).permit(:title, :matric_no, :phone_no, :rate, :description, :category_id, :image, pictures_attributes: [:id, :image, :_destroy])
 	end
 
 	def find_request

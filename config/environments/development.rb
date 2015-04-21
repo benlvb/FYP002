@@ -40,13 +40,15 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  # config.paperclip_defaults = {
-  #   :storage => :s3,
-  #   :s3_credentials => {
-  #     :bucket => "rentalmarketplace",
-  #     :access_key_id => ENV["AWSS3_KEY"],
-  #     :secret_access_key => ENV["AWSS3_SECRET"]
-  #   },
-  #   :s3_protocol => :https
-  # }
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => "rentalmarketplace",
+      :access_key_id => ENV["AWSS3_KEY"],
+      :secret_access_key => ENV["AWSS3_SECRET"]
+    },
+    :s3_protocol => :https
+  }
 end

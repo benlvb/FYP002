@@ -7,7 +7,11 @@
 <%= link_to 'Sign Out', destroy_user_session_path, method: "delete" %> <br />
 
 <% @requests.each do |request| %>
-	<%#= link_to (image_tag request.pictures.image.url(:medium)), request %>
+	<% if request.pictures.present? %>
+	<%= link_to (image_tag request.pictures.first.image.url(:medium)), request %>
+	<% else %>
+	<%= link_to image_tag ("http://placehold.it/350x150") %>
+	<% end %>
 	<h2><%= link_to request.title, request %></h2>
 	<p>Submitted by <%= request.user.name %></p>
 	<p><%= request.comments.count %> Comments</p>
