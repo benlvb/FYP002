@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   		get "dislike", to: "requests#downvote"
   	end
   	resources :comments
+    resources :images
   end
 
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
