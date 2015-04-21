@@ -4,11 +4,11 @@
 
 	<br />
 
-	<%= f.fields_for :image do |image| %>
-	  <%= image.text_field :image %>
+	<%= f.fields_for :images do |image| %>
+	  <%= image.text_field :name %>
 	  <%= image.link_to_remove "Remove this Image" %>
 	<% end %>
-	<p><%= f.link_to_add "Add an Image", :image %></p>
+	<p><%= f.link_to_add "Add an Image", :images %></p>
 
 	<%#= f.label :image, 'Image' %>
 	<%#= f.file_field :image, as: :file %>
