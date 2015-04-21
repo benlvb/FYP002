@@ -14,6 +14,7 @@ before_action :authenticate_user!, except: [:index, :show]
 	def show
 		@category = Category.find(Request.find(params[:id]).category_id)
 		@comments = Comment.where(request_id: @request)
+		@images = @request.images
 	end
 
 	def new
@@ -21,7 +22,8 @@ before_action :authenticate_user!, except: [:index, :show]
 	end
 
 	def create
-		@request = current_user.requests.build(requests_params)
+		@request = Request.new(requests_params)
+		@request.user = current_user
 		if @request.save
 			redirect_to @request, flash: { success: 'Request has been created!' }
 		else
@@ -58,7 +60,7 @@ before_action :authenticate_user!, except: [:index, :show]
 	private
 
 	def requests_params
-		params.require(:request).permit(:title, :matric_no, :phone_no, :rate, :description, :category_id, images_attributes: [:id, :image, :_destroy])
+		params.require(:request).permit(:title, :matric_no, :phone_no, :rate, :description, :category_id, images_attributes: [:id, :content])
 	end
 
 	def find_request

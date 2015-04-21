@@ -5,7 +5,7 @@
 	<br />
 
 	<%= f.fields_for :images do |image| %>
-		<%= image.file_field :image, as: :file %>
+		<%= image.file_field :content %>
 			<%= f.hidden_field :_destroy %>
 			<%= f.link_to_remove "Delete" %>
 	<% end %>
