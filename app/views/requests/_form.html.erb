@@ -4,11 +4,18 @@
 
 	<br />
 
+	<% if @request.images.present? %>
+		<% @request.images.each do |picture| %>
+			<%= image_tag picture.content.url(:medium) %>
+			<%= f.input :_destroy, as: :boolean, required: false, label: "Remove Image" %>
+		<% end %>
+	<% end %>
+
 	<%= f.fields_for :images do |image| %>
 		<%= image.file_field :content %>
-			<%= f.hidden_field :_destroy %>
-			<%= f.link_to_remove "Delete" %>
-	<% end %>
+		<%= f.link_to_remove "Delete" %>
+	<% end %>	
+
 	<%= f.link_to_add "Add new Image", :images %>
 
 	<%= f.input :title, label: "Title", placeholder: "Title" %>

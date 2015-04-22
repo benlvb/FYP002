@@ -8,6 +8,7 @@ before_action :authenticate_user!, except: [:index, :show]
 		else
 			@category_id = Category.find_by(name: params[:category]).id
 			@requests = Request.where(category_id: @category_id).order("created_at DESC")
+			@images = @request.images
 		end
 	end
 
@@ -32,6 +33,8 @@ before_action :authenticate_user!, except: [:index, :show]
 	end
 
 	def edit
+		@images = @request.images
+
 	end
 
 	def update
@@ -60,7 +63,7 @@ before_action :authenticate_user!, except: [:index, :show]
 	private
 
 	def requests_params
-		params.require(:request).permit(:title, :matric_no, :phone_no, :rate, :description, :category_id, images_attributes: [:id, :content])
+		params.require(:request).permit(:title, :matric_no, :phone_no, :rate, :description, :category_id, :content, images_attributes:[:id, :content, :_destroy])
 	end
 
 	def find_request
