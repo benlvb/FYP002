@@ -8,12 +8,14 @@ before_action :authenticate_user!, except: [:index, :show]
 		else
 			@category_id = Category.find_by(name: params[:category]).id
 			@requests = Request.where(category_id: @category_id).order("created_at DESC")
+			@images = @request.images
 		end
 	end
 
 	def show
 		@category = Category.find(Request.find(params[:id]).category_id)
 		@comments = Comment.where(request_id: @request)
+		@images = @request.images
 	end
 
 	def new
@@ -21,7 +23,8 @@ before_action :authenticate_user!, except: [:index, :show]
 	end
 
 	def create
-		@request = current_user.requests.build(requests_params)
+		@request = Request.new(requests_params)
+		@request.user = current_user
 		if @request.save
 			redirect_to @request, flash: { success: 'Request has been created!' }
 		else
@@ -30,6 +33,8 @@ before_action :authenticate_user!, except: [:index, :show]
 	end
 
 	def edit
+		@images = @request.images
+
 	end
 
 	def update
@@ -58,7 +63,7 @@ before_action :authenticate_user!, except: [:index, :show]
 	private
 
 	def requests_params
-		params.require(:request).permit(:title, :matric_no, :phone_no, :rate, :description, :category_id, :image, tasks_attributes: [:id, :image, :_destroy])
+		params.require(:request).permit(:title, :matric_no, :phone_no, :rate, :description, :category_id, images_attributes:[:id, :content, :_destroy])
 	end
 
 	def find_request

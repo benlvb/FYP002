@@ -1,4 +1,7 @@
-<%= image_tag @request.image.url(:medium) %>
+<% @images.each do |image| %>
+	<%= image_tag image.content.url(:medium) %>
+<% end %>
+
 <h1><%= @request.title %></h1>
 <p><%= @category.name %></p>
 <p><%= @request.matric_no %></p>

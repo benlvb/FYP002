@@ -7,7 +7,7 @@
 <%= link_to 'Sign Out', destroy_user_session_path, method: "delete" %> <br />
 
 <% @requests.each do |request| %>
-	<%= link_to (image_tag request.image.url(:medium)), request %>
+	<%= link_to (image_tag request.images.first.content.url(:medium)), request %>
 	<h2><%= link_to request.title, request %></h2>
 	<p>Submitted by <%= request.user.name %></p>
 	<p><%= request.comments.count %> Comments</p>

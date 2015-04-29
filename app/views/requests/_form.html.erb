@@ -4,19 +4,15 @@
 
 	<br />
 
-	<%= f.fields_for :image do |image| %>
-	  <%= task_form.text_field :image %>
-	  <%= task_form.link_to_remove "Remove this Image" %>
+	<%= f.fields_for :images do |image| %>
+		<%= image.file_field :content %>
+		<% if @request.images.present? %>
+			<%= image_tag @request.images.first.content.url(:medium) %>
+		<% end %>
+		<%= image.link_to_remove "Delete" %>
 	<% end %>
-	<p><%= f.link_to_add "Add an Image", :image %></p>
 
-	<%#= f.label :image, 'Image' %>
-	<%#= f.file_field :image, as: :file %>
-	<%# if @request.image? %>
-		<%#= image_tag @request.image.url(:medium) %>
-		<%#= f.hidden_field :_destroy %>
-		<%#= f.link_to_remove "Delete" %>
-	<%# end %>
+	<%= f.link_to_add "Add new Image", :images %>
 
 	<%= f.input :title, label: "Title", placeholder: "Title" %>
 
