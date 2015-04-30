@@ -3,26 +3,22 @@
 	<%= f.collection_select :category_id, Category.all, :id, :name, {promt: "Choose a category" } %>
 
 	<br />
-
-	<%= f.fields_for :images do |image| %>
-		<%= image.file_field :content %>
-		<% if @request.images.present? %>
-			<%= image_tag @request.images.first.content.url(:medium) %>
+	<div class="current_image">
+		<%= f.fields_for :images do |image| %>
+			<%= image.file_field :content %>
+			<% if @request.images.present? %>
+				<%= image_tag @request.images.first.content.url(:medium) %>
+			<% end %>
+			<%= image.link_to_remove "Delete" %>
 		<% end %>
-		<%= image.link_to_remove "Delete" %>
-	<% end %>
+	</div>
 
 	<%= f.link_to_add "Add new Image", :images %>
-
 	<%= f.input :title, label: "Title", placeholder: "Title" %>
-
 	<%= f.input :matric_no, label: "Matrics Number", placeholder: "B012345678" %>
-
 	<%= f.input :phone_no, label: "Phone Number (MY)", placeholder: "0123456789" %>
-
 	<%= f.input :rate, label: "Rate per hour/day", placeholder: "20.00" %>
-
 	<%= f.input :description, label: "Description", placeholder: "Tell us more" %>
+	<%= f.button :submit, class: "btn btn-primary" %>
 
-	<%= f.button :submit %>
 <% end %>

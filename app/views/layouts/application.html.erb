@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>UTeM Rental / Marketplace</title>
+  <title>UTeM Rental Marketplace</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	
-	<%= link_to "All Requests", root_path %>
-	<% Category.all.each do |category| %>
-		<%= link_to category.name, requests_path(category: category.name) %>
+
+<%= render "common/header" %>
+<div class="container">
+	<% flash.each do |name, msg| %>
+		<%= content_tag :div, msg, class: "alert alert-info" %>
 	<% end %>
+	<%= yield %>
+</div>
 
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-
-<%= yield %>
+<%= render "common/footer" %>
 
 </body>
 </html>
