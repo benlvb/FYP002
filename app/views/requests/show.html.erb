@@ -1,31 +1,44 @@
-<% @images.each do |image| %>
-	<%= image_tag image.content.url(:medium) %>
-<% end %>
+<div id="pin_show" class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel panel-default">
+			<div class="panel-heading request_image">
+				<% @images.each do |image| %>
+					<%= image_tag image.content.url(:medium) %>
+				<% end %>
+			</div>
+			<div class="panel-body">
+				<h1><%= @request.title %></h1>
+				<p class="description"><%= @category.name %></p>
+				<p class="description"><%= @request.matric_no %></p>
+				<p class="description"><%= @request.phone_no %></p>
+				<p class="description"><%= @request.rate %></p>
+				<p class="description"><%= @request.description %></p>
+			</div>
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-md-6">
+						<p>Submitted by <%= @request.user.name %></p>
+						<p><%= @request.get_upvotes.size %> Likes</p>
+						<p><%= @request.get_downvotes.size %> Dislikes</p>
+						<%= link_to "Like", like_request_path(@request), method: :get, class: "btn btn-default" %>
+						<%= link_to "Dislike", dislike_request_path(@request), method: :get, class: "btn btn-default" %>
 
-<h1><%= @request.title %></h1>
-<p><%= @category.name %></p>
-<p><%= @request.matric_no %></p>
-<p><%= @request.phone_no %></p>
-<p><%= @request.rate %></p>
-<p><%= @request.description %></p>
-<p>Submitted by <%= @request.user.name %></p>
+						<h2><%= pluralize(@request.comments.count, "Comment") %></h2>
 
-<p><%= @request.get_upvotes.size %> Likes</p>
-<p><%= @request.get_downvotes.size %> Dislikes</p>
-<%= link_to "Like", like_request_path(@request), method: :get %>
-<%= link_to "Dislike", dislike_request_path(@request), method: :get %>
+						<% @comments.each do |comment| %>
 
+							<p class="user"><%= comment.user.name %></p>
+							<p><%= comment.content %></p>
+							
+						<% end %>
 
-<h2><%= pluralize(@request.comments.count, "Comment") %></h2>
+						<%= render 'comments/form' %>
 
-<% @comments.each do |comment| %>
-
-	<p><%= comment.user.name %></p>
-	<p><%= comment.content %></p>
-	
-<% end %>
-
-<%= render 'comments/form' %>
-
-<%= link_to 'Edit', edit_request_path %>
-<%= link_to 'Delete', request_path(@request), method: :delete, data: { confirm: "Are you sure?"} %>
+						<%= link_to 'Edit', edit_request_path, class:"btn btn-default" %>
+						<%= link_to 'Delete', request_path(@request), method: :delete, data: { confirm: "Are you sure?"} , class:"btn btn-default" %>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
 before_action :find_request, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 before_action :authenticate_user!, except: [:index, :show]
+skip_before_filter :verify_authenticity_token
 
 	def index
 		if params[:category].blank?
@@ -8,7 +9,7 @@ before_action :authenticate_user!, except: [:index, :show]
 		else
 			@category_id = Category.find_by(name: params[:category]).id
 			@requests = Request.where(category_id: @category_id).order("created_at DESC")
-			@images = @request.images
+			#@images = @request.images
 		end
 	end
 
