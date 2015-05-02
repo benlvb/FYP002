@@ -1,6 +1,6 @@
 <% if !user_signed_in? %>
 <% else %>
-	<div id='requests transitions-enabled'>
+	<div id='requests' class= 'transitions-enabled'>
 		<% @requests.each do |request| %>
 			<div class="box panel panel-default">
 				<%= link_to (image_tag request.images.first.content.url(:medium)), request %>
@@ -15,14 +15,3 @@
 		<% end %>
 	</div>
 <% end %>
-
-<div id="requests transitions-enabled">
-	<% @requests.each do |request| %>
-	<div class="box panel panel-default">
-		<%= link_to (image_tag request.images.first.content.url(:medium)), request %>
-		<div class="panel-body">
-			<h2><%= link_to request.title, request %></h2>
-		</div>
-	<% end %>
-	</div>
-</div>
