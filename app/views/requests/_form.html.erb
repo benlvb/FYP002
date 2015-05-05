@@ -6,9 +6,7 @@
 	<div class="current_image">
 		<%= f.fields_for :images do |image| %>
 			<%= image.file_field :content %>
-			<% if @request.images.present? %>
-				<%= image_tag @request.images.first.content.url(:medium) %>
-			<% end %>
+			<%= image_tag image.object.content.url(:medium) if image.object.content.present? %>
 			<%= image.link_to_remove "Delete" %>
 		<% end %>
 	</div>
