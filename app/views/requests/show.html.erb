@@ -33,9 +33,13 @@
 						<% end %>
 
 						<%= render 'comments/form' %>
-
-						<%= link_to 'Edit', edit_request_path, class:"btn btn-default" %>
-						<%= link_to 'Delete', request_path(@request), method: :delete, data: { confirm: "Are you sure?"} , class:"btn btn-default" %>	
+						<% if @request.user_id == current_user.id %>
+							<%= link_to 'Edit', edit_request_path, class:"btn btn-default" %>
+							<%= link_to 'Delete', request_path(@request), method: :delete, data: { confirm: "Are you sure?"} , class:"btn btn-default" %>
+							<%= @request.inspect %>
+							<%= current_user.inspect %>
+						<% else %>
+							<%= link_to 'Back', request_path %>	
 					</div>
 				</div>
 			</div>
