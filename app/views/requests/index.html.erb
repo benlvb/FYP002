@@ -1,17 +1,18 @@
 <% if !user_signed_in? %>
+
 <% else %>
-	<div id='requests' class= 'transitions-enabled'>
-		<% @requests.each do |request| %>
-			<div class="box panel panel-default">
-				<%= link_to (image_tag request.images.first.content.url(:medium)), request %>
-				<div class="panel-body">
-					<h2><%= link_to request.title, request %></h2>
-					<p>Submitted by <%= request.user.name %></p>
-					<p><%= request.comments.count %> Comments</p>
-					<p><%= request.get_upvotes.size %> Likes</p>
-					<p><%= request.get_downvotes.size %> Likes</p>
+		<div id='requests' class= 'transitions-enabled'>
+			<% @requests.each do |request| %>
+				<div class="box panel panel-default">
+					<%= link_to (image_tag request.images.first.content.url(:medium)), request %>
+					<div class="panel-body">
+						<h2><%= link_to request.title, request %></h2>
+						<p>Submitted by <%= request.user.name %></p>
+						<p><%= request.comments.count %> Comments</p>
+						<p><%= request.get_upvotes.size %> Likes</p>
+						<p><%= request.get_downvotes.size %> Likes</p>
+					</div>
 				</div>
-			</div>
-		<% end %>
-	</div>
+			<% end %>
+		</div>
 <% end %>

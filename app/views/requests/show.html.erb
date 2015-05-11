@@ -1,48 +1,81 @@
-<div id="pin_show" class="row">
-	<div class="col-md-8 col-md-offset-2">
-		<div class="panel panel-default">
-			<div class="panel-heading request_image">
-				<% @images.each do |image| %>
+<div id="request_show">
+	<h1><%= @request.title %></h1>
+	<p class="username">
+		Submitted by <%= @request.user.name %> about <%= time_ago_in_words(@request.created_at) %>
+	</p>
+	<div class="clearfix">
+		<div class="request_image_description">
+			<% @images.each do |image| %>
 					<%= image_tag image.content.url(:medium) %>
 				<% end %>
-			</div>
-			<div class="panel-body">
-				<h1><%= @request.title %></h1>
-				<p class="description"><%= @category.name %></p>
-				<p class="description"><%= @request.matric_no %></p>
-				<p class="description"><%= @request.phone_no %></p>
-				<p class="description"><%= @request.rate %></p>
-				<p class="description"><%= @request.description %></p>
-			</div>
-			<div class="panel-footer">
-				<div class="row">
-					<div class="col-md-6">
-						<p>Submitted by <%= @request.user.name %></p>
-						<p><%= @request.get_upvotes.size %> Likes</p>
-						<p><%= @request.get_downvotes.size %> Dislikes</p>
-						<%= link_to "Like", like_request_path(@request), method: :get, class: "btn btn-default" %>
-						<%= link_to "Dislike", dislike_request_path(@request), method: :get, class: "btn btn-default" %>
-
-						<h2><%= pluralize(@request.comments.count, "Comment") %></h2>
-
-						<% @comments.each do |comment| %>
-
-							<p class="user"><%= comment.user.name %></p>
-							<p><%= comment.content %></p>
-							
-						<% end %>
-
-						<%= render 'comments/form' %>
-						<%# if @request.user_id == current_user.id %>
-						<% if cannot? :manage, @request %>
-							<%= link_to 'Edit', edit_request_path, class:"btn btn-default" %>
-							<%= link_to 'Delete', request_path(@request), method: :delete, data: { confirm: "Are you sure?"} , class:"btn btn-default" %>
-						<% else %>
-							<%= link_to 'Back', request_path , class:"btn btn-default"%>	
-						<% end %>
-					</div>
-				</div>
+			<div class="description">
+				<%= simple_format(@request.description) %>
 			</div>
 		</div>
+		<div class="request_data">
+			<%= link_to like_request_path(@request), method: :get, class: "data" do %>
+        <i class="fa fa-thumbs-o-up"></i>
+        <%= pluralize(@request.get_upvotes.size, "Like") %>
+      <% end %>
+      <%= link_to dislike_request_path(@request), method: :get, class: "data" do %>
+        <i class="fa fa-thumbs-o-down"></i>
+        <%= pluralize(@request.get_downvotes.size, "Dislike") %>
+      <% end %>
+      <p class="data">
+        <i class="fa fa-comments-o"></i>
+        <%= pluralize(@request.comments.count, "Comment") %>
+      </p>
+      <% if @request.user == current_user %>
+        <%= link_to "Edit", edit_request_path(@request), class: "data" %>
+        <%= link_to "Delete", request_path(@request), method: :delete, data: { confirm: "Are you sure?" }, class: "data" %>
+      <% end %>
+    </div>
+    <div id="random_request">
+      <h3>Recommendation</h3>
+      <div class="request">
+        <div class="request_image">
+          <%= link_to (image_tag @random_request.images.first.content.url(:medium)), request_path(@random_request) %>
+        </div>
+        <div class="request_content">
+          <div class="title">
+            <h2>
+              <%= link_to @random_request.title, request_path(@random_request) %>
+            </h2>
+          </div>
+          <div class="data clearfix">
+            <p class="username">
+              Submitted by
+              <%= @random_request.user.name %>
+            </p>
+            <p class="buttons">
+              <span>
+                <i class="fa fa-comments-o"></i>
+                <%= @random_request.comments.count %>
+              </span>
+              <span>
+                <i class="fa fa-thumbs-o-up"></i>
+                <%= @random_request.get_likes.size %>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+     </div>
 	</div>
+</div>			
+<div id="comments">
+  <h2 class="comment_count">
+    <%= pluralize(@request.comments.count, "Comment") %>
+  </h2>
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <p class="username">
+        <%= comment.user.name %>
+      </p>
+      <p class="content">
+        <%= comment.content %>
+      </p>
+    </div>
+  <% end %>
+  <%= render 'comments/form' %>
 </div>

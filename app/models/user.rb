@@ -53,6 +53,12 @@ class User < ActiveRecord::Base
     user
   end
 
+  # searchable do
+  #   string :title
+  # end
+
+  # delegate :title, to: :request
+
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
   end
