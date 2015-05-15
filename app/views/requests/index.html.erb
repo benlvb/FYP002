@@ -1,6 +1,19 @@
 <% if !user_signed_in? %>
-
+	<p id="intro">
+		Hi Stranger!
+		<br />
+		<span>
+			Sign up or Sign in to check out more!
+		</span>
+	</p>
 <% else %>
+	<p id="intro">
+		Hello <%= current_user.name %>
+		<br />
+		<span>
+			Get something interesting or even sell something!
+		</span>
+	</p>
 		<div id='requests' class= 'transitions-enabled'>
 			<% @requests.each do |request| %>
 				<div class="box panel panel-default">
