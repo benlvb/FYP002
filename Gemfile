@@ -27,9 +27,9 @@ gem 'sunspot_solr'
 gem 'capistrano', '~> 3.2.1'
 gem 'capistrano-rails', '~> 1.1'
 gem 'capistrano-rbenv', github: "capistrano/rbenv"
+gem 'mysql2'
 
 group :development, :test do
-  gem 'mysql2'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
