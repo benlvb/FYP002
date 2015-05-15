@@ -11,7 +11,7 @@
 		<% end %>
 	</div>
 
-	<%= f.link_to_add "Add new Image", :images %>
+	<%= f.link_to_add "Add new Image", :images , class: "form-control" %>
 	<%= f.input :title, label: "Title", placeholder: "Title" %>
 	<%= f.input :matric_no, label: "Matrics Number", placeholder: "B012345678" %>
 	<%= f.input :phone_no, label: "Phone Number (MY)", placeholder: "0123456789" %>

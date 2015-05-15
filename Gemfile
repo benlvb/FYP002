@@ -24,6 +24,9 @@ gem 'masonry-rails'
 gem 'cancancan', '~> 1.10'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem 'capistrano', '~> 3.2.1'
+gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano-rbenv', github: "capistrano/rbenv"
 
 group :development, :test do
   gem 'mysql2'
@@ -34,8 +37,8 @@ group :development, :test do
   gem 'better_errors'
 end
 
-group :production do
-  gem 'pg',             '0.17.1'
-  gem 'rails_12factor', '0.0.2'
-end
+# group :production do
+#   gem 'pg',             '0.17.1'
+#   gem 'rails_12factor', '0.0.2'
+# end
 
