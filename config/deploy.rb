@@ -20,7 +20,7 @@ set :deploy_to, '/var/www/fyp_staging'
 # set :log_level, :debug
 
 # Default value for :pty is false
-set :pty, true
+# set :pty, true
 
 # Default value for :linked_files is []
 set :linked_files, %w{config/database.yml}
