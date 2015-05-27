@@ -94,5 +94,11 @@ header {
    margin-left: -800px;
 }
 
+.carousel-inner>.item>img {
+margin: 0 auto;
+height: 800px;
+width: 100%;
+}
+
 @import 'home.scss';
 @import 'requests.scss';
