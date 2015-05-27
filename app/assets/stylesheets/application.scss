@@ -80,5 +80,19 @@ header {
 	}
 }
 
+.carousel.slide{
+    max-width: 1600px; //the largest you want the image to stretch
+    min-width: 900px; //the "container" width 
+    max-height: 800px;
+    min-height: 400px;
+    overflow: hidden;
+}
+.carousel-inner{
+   width: 1600px;
+   height: 450px;
+   left: 50%;
+   margin-left: -800px;
+}
+
 @import 'home.scss';
 @import 'requests.scss';
