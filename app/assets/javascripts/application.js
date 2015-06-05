@@ -11,15 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require ahoy
 //= require jquery_ujs
 //= require masonry/jquery.masonry
 //= require bootstrap-sprockets
-//= require jquery_nested_form
 //= require_tree .
+//= require jquery_nested_form
 
-$(document).ready(function(){
-	ahoy.trackAll();
-	ahoy.trackView();
-	ahoy.trackClicks();
-});

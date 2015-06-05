@@ -17,7 +17,7 @@ skip_before_filter :verify_authenticity_token
 		@category = Category.find(Request.find(params[:id]).category_id)
 		@comments = Comment.where(request_id: @request)
 		@images = @request.images
-		@random_request = Request.where.not(id: @request).order("rand()").first
+		@random_request = Request.where.not(id: @request).order("random()").first
 	end
 
 	def new
@@ -36,6 +36,7 @@ skip_before_filter :verify_authenticity_token
 
 	def edit
 		@images = @request.images
+
 	end
 
 	def update
