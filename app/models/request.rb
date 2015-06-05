@@ -8,5 +8,5 @@ class Request < ActiveRecord::Base
 
   acts_as_votable
 
-  visitable
+  # visitable
 end
