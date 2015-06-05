@@ -2,6 +2,7 @@ class RequestsController < ApplicationController
 before_action :find_request, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 before_action :authenticate_user!, except: [:index, :show]
 skip_before_filter :verify_authenticity_token
+impressionist :actions=>[:index]
 
 	def index
 		if params[:category].blank?
@@ -17,7 +18,8 @@ skip_before_filter :verify_authenticity_token
 		@category = Category.find(Request.find(params[:id]).category_id)
 		@comments = Comment.where(request_id: @request)
 		@images = @request.images
-		@random_request = Request.where.not(id: @request).order("random()").first
+		@random_request = Request.where.not(id: @request).order("rand()").first
+		impressionist(@request)
 	end
 
 	def new

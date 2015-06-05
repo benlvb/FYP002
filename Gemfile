@@ -22,8 +22,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'nested_form'
 gem 'masonry-rails'
 gem 'cancancan', '~> 1.10'
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+gem 'impressionist'
 
 group :development, :test do
   gem 'mysql2'
