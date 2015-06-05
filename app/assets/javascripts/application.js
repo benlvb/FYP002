@@ -16,4 +16,14 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require jquery_nested_form
+//= require ahoy
 
+$(document).ready(function(){
+	// ahoy.trackAll();
+	ahoy.trackView();
+	ahoy.trackClicks();
+	// ahoy.reset();
+	ahoy.debug();
+	ahoy.track("Viewed book", {title: "The World is Flat"});
+	console.log("aaaaaaaaa")
+});
