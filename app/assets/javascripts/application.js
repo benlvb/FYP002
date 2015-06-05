@@ -11,19 +11,15 @@
 // about supported directives.
 //
 //= require jquery
+//= require ahoy
 //= require jquery_ujs
 //= require masonry/jquery.masonry
 //= require bootstrap-sprockets
-//= require_tree .
 //= require jquery_nested_form
-//= require ahoy
+//= require_tree .
 
 $(document).ready(function(){
-	// ahoy.trackAll();
+	ahoy.trackAll();
 	ahoy.trackView();
 	ahoy.trackClicks();
-	// ahoy.reset();
-	ahoy.debug();
-	ahoy.track("Viewed book", {title: "The World is Flat"});
-	console.log("aaaaaaaaa")
 });

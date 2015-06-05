@@ -20,11 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def track_action
-    puts "-----------------------------------------------"
-    # puts ahoy.inspect
-    ahoy.track "ABCD"
-    # ahoy.track "Processed #{controller_name}##{action_name}", request.filtered_parameters
-    puts current_visit.inspect
+    ahoy.track "Processed #{controller_name}##{action_name}", request.filtered_parameters
   end
 
 end

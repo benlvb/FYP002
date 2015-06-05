@@ -8,8 +8,5 @@ class Request < ActiveRecord::Base
 
   acts_as_votable
 
-  is_impressionable :counter_cache => true, :column_name => :view_count, :unique => true
-
   visitable
-
 end

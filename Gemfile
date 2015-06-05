@@ -24,7 +24,6 @@ gem 'masonry-rails'
 gem 'cancancan', '~> 1.10'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
-gem 'impressionist'
 gem 'ahoy_matey'
 gem 'activeuuid', '>= 0.5.0'
 
