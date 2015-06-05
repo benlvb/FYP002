@@ -22,12 +22,6 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'nested_form'
 gem 'masonry-rails'
 gem 'cancancan', '~> 1.10'
-gem 'sunspot_rails'
-gem 'sunspot_solr'
-gem 'ahoy_matey'
-gem 'activeuuid', '>= 0.5.0'
-gem 'better_errors'
-gem 'binding_of_caller'
 
 group :development, :test do
   gem 'mysql2'
@@ -35,7 +29,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'quiet_assets'
-  # gem 'better_errors'
+   gem 'better_errors'
 end
 
 group :production do

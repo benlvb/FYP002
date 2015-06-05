@@ -7,6 +7,4 @@ class Request < ActiveRecord::Base
   accepts_nested_attributes_for :images, :allow_destroy => true
 
   acts_as_votable
-
-  visitable
 end
