@@ -267,6 +267,7 @@ DEPENDENCIES
   awesome_print
   aws-sdk (< 2.0)
   better_errors
+  binding_of_caller
   bootstrap-sass
   byebug
   cancancan (~> 1.10)
