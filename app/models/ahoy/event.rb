@@ -5,6 +5,6 @@ module Ahoy
     belongs_to :visit
     belongs_to :user
 
-    serialize :properties, JSON
+    # serialize :properties, JSON
   end
 end
