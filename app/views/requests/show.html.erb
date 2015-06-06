@@ -1,11 +1,11 @@
-<div class="container-fluid">
+<div class="container-fluid" id="request_show">
   <div class="row">
     <h1><%= @request.title %></h1>
         <p class="username">
           Submitted by <%= @request.user.name %> about <%= time_ago_in_words(@request.created_at) %>
         </p>
   </div>
-  <div class="row" id="request_show">
+  <div class="row">
     <div class="col-md-6">	
     	<div class="clearfix">
     		<div class="request_image_description">
