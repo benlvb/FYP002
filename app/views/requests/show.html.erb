@@ -1,19 +1,25 @@
-<div id="request_show">
-	<h1><%= @request.title %></h1>
-	<p class="username">
-		Submitted by <%= @request.user.name %> about <%= time_ago_in_words(@request.created_at) %>
-	</p>
-	<div class="clearfix">
-		<div class="request_image_description">
-			<% @images.each do |image| %>
-					<%= image_tag image.content.url(:medium) %>
-				<% end %>
-			<div class="description">
-				<%= simple_format(@request.description) %>
-			</div>
-		</div>
-		<div class="request_data">
-			<%= link_to like_request_path(@request), method: :get, class: "data" do %>
+<div class="container-fluid">
+  <div class="row">
+    <h1><%= @request.title %></h1>
+        <p class="username">
+          Submitted by <%= @request.user.name %> about <%= time_ago_in_words(@request.created_at) %>
+        </p>
+  </div>
+  <div class="row" id="request_show">
+    <div class="col-md-6">  
+      <div class="clearfix">
+        <div class="request_image_description">
+          <% @images.each do |image| %>
+              <%= image_tag image.content.url(:medium) %>
+            <% end %>
+          <div class="description">
+            <%= simple_format(@request.description) %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="request_data col-md-2">
+      <%= link_to like_request_path(@request), method: :get, class: "data" do %>
         <i class="fa fa-thumbs-o-up"></i>
         <%= pluralize(@request.get_upvotes.size, "Like") %>
       <% end %>
@@ -30,7 +36,7 @@
         <%= link_to "Delete", request_path(@request), method: :delete, data: { confirm: "Are you sure?" }, class: "data" %>
       <% end %>
     </div>
-    <div id="random_request">
+    <div class="col-md-4" id="random_request">
       <h3>Recommendation</h3>
       <div class="request">
         <div class="request_image">
@@ -61,21 +67,28 @@
         </div>
       </div>
      </div>
-	</div>
-</div>			
-<div id="comments">
-  <h2 class="comment_count">
-    <%= pluralize(@request.comments.count, "Comment") %>
-  </h2>
-  <% @comments.each do |comment| %>
-    <div class="comment">
-      <p class="username">
-        <%= comment.user.name %>
-      </p>
-      <p class="content">
-        <%= comment.content %>
-      </p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <!-- <iframe width="550" height="400" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q={@request.address}%20River%20Malaysia&key=AIzaSyCnfFHJDsjchC3WIUjV9ChdJCCWlbEaB_E"></iframe> -->
+      <iframe width="550" height="400" frameborder="0" style="border:0" src= <%= "https://www.google.com/maps/embed/v1/place?key=AIzaSyCnfFHJDsjchC3WIUjV9ChdJCCWlbEaB_E&q=#{@request.latitude},#{@request.longitude}" %>></iframe> 
+    </div>      
+    <div class="col-md-8" id="comments">
+      <h2 class="comment_count">
+        <%= pluralize(@request.comments.count, "Comment") %>
+      </h2>
+      <% @comments.each do |comment| %>
+        <div class="comment">
+          <p class="username">
+            <%= comment.user.name %>
+          </p>
+          <p class="content">
+            <%= comment.content %>
+          </p>
+        </div>
+      <% end %>
+      <%= render 'comments/form' %>
     </div>
-  <% end %>
-  <%= render 'comments/form' %>
+  </div>
 </div>

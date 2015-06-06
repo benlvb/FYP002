@@ -23,6 +23,7 @@ gem 'nested_form'
 gem 'masonry-rails'
 gem 'cancancan', '~> 1.10'
 gem 'impressionist'
+gem 'geocoder'
 
 group :development, :test do
   gem 'mysql2'
