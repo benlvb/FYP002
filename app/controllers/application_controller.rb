@@ -16,8 +16,4 @@ class ApplicationController < ActionController::Base
   	devise_parameter_sanitizer.for(:account_update) << :name
   end
 
-  def after_inactive_sign_up_path_for(resource)
-    root_path
-  end
-
 end

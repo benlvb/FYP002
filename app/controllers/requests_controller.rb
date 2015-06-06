@@ -18,7 +18,7 @@ impressionist :actions=>[:index]
 		@category = Category.find(Request.find(params[:id]).category_id)
 		@comments = Comment.where(request_id: @request)
 		@images = @request.images
-		@random_request = Request.where.not(id: @request).order("rand()").first
+		@random_request = Request.where.not(id: @request).order("random()").first
 		impressionist(@request)
 	end
 
@@ -67,7 +67,7 @@ impressionist :actions=>[:index]
 	private
 
 	def requests_params
-		params.require(:request).permit(:title, :matric_no, :phone_no, :rate, :description, :address, :latitude, :longitude, :category_id, images_attributes:[:id, :content, :_destroy])
+		params.require(:request).permit(:title, :matric_no, :phone_no, :rate, :description, :category_id, images_attributes:[:id, :content, :_destroy])
 	end
 
 	def find_request

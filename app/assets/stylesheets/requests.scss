@@ -5,7 +5,7 @@
 #request_show {
 	padding-top: 2rem;
 	.request_image_description {
-		width: 100%;
+		width: 50%;
 		float: left;
 		margin-right: 5%;
 	}
@@ -36,19 +36,19 @@
 		}
 	}
 	#random_request {
-		width: 30%;
+		width: 25%;
 		margin-left: 5%;
 		margin-top: -3.2rem;
 		float: left;
 		h3 {
-			font-size: 2rem;
+			font-size: 1rem;
 		}
 		.request {
 			background: #F8F9FA;
 			border: 1px solid #E4E4E4;
 			border-radius: 0.3rem;
 			.request_image {
-				height: 150px;
+				height: 200px;
 				overflow: hidden;
 				img {
 					width: 100%;
@@ -61,7 +61,7 @@
 					font-weight: 100;
 					padding: 1rem 5%;
 					border-bottom: 1px solid #E4E4E4;
-					font-size: 1.8rem;
+					font-size: 1.25rem;
 					a {
 						text-decoration: none;
 						color: #333233;
@@ -75,7 +75,7 @@
 					color: #969696;
 					.username, .buttons {
 						margin: 0;
-						font-size: 1.0em;
+						font-size: .8rem;
 					}
 					.username {
 						float: left;
@@ -104,7 +104,7 @@
 	}
 	.description {
 		margin: 2rem 0;
-		font-size: 2rem;
+		font-size: 1.1rem;
 		line-height: 1.5;
 		color: #969696;
 	}
@@ -112,7 +112,7 @@
 
 #comments {
 	padding-bottom: 4rem;
-	width: 70%;
+	width: 50%;
 	.comment_count {
 		border-bottom: 1px solid #E9E9E9;
 		padding-bottom: .5rem;

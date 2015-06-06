@@ -10,7 +10,4 @@ class Request < ActiveRecord::Base
 
   is_impressionable :counter_cache => true, :column_name => :view_count, :unique => true
 
-  geocoded_by :address
-  after_validation :geocode, :if => :address_changed?
-
 end
