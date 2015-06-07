@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :confirmable
 
-  has_many :requests
-  has_many :comments
+  has_many :requests, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
