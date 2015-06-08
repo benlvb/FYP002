@@ -73,7 +73,12 @@
     <div class="col-md-8">
       <!-- <iframe width="550" height="400" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q={@request.address}%20River%20Malaysia&key=AIzaSyCnfFHJDsjchC3WIUjV9ChdJCCWlbEaB_E"></iframe> -->
       <iframe width="550" height="400" frameborder="0" style="border:0" src= <%= "https://www.google.com/maps/embed/v1/place?key=AIzaSyCnfFHJDsjchC3WIUjV9ChdJCCWlbEaB_E&q=#{@request.latitude},#{@request.longitude}" %>></iframe> 
-    </div>      
+    </div>
+
+    <div class="col-md-8">
+      <h3><%= @request.address %></h3>
+    </div>
+    
     <div class="col-md-8" id="comments">
       <h2 class="comment_count">
         <%= pluralize(@request.comments.count, "Comment") %>
