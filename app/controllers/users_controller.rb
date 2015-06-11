@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_filter :set_user, only: [:show, :edit, :update]
   before_filter :validate_authorization_for_user, only: [:edit, :update]
 
-
   # GET /users/1
   def show
   end
@@ -29,6 +28,7 @@ class UsersController < ApplicationController
 
   def dashboard
     @requests = Request.where(:user_id => current_user)
+    @impression = Impression.where(impressionable_id: @request_id)
   end
 
   # GET/PATCH /users/:id/finish_signup

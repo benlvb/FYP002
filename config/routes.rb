@@ -20,4 +20,6 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'users#dashboard'
 
+  get '/traffic', to: 'pages#traffic'
+
 end

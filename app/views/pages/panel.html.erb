@@ -1,9 +1,23 @@
 <%= line_chart @impressions.group_by_day(:created_at).count %>
-<h1><%= @impressions.all.count %> of Visits</h1>
-<% @impressions.each do |impression| %>
+<div class="container-fluid">
+	<div class="row">
+		<h1><%= link_to @impressions.all.count , traffic_path  %> of Visits</h1>
+	</div>
 
-	<h3><%= impression.ip_address %></h3>
-	<p>Referrer : <%= impression.referrer %></p>
-	<p>How long : <%= impression.created_at %></p>
-
-<% end %>
+		<div class='row'>
+			<table>
+			<tr>
+				<th>Title</th>
+				<th></th>
+				<th>Number of views</th>
+			</tr>
+			<tr>
+				<% @requests.each do |request| %>
+					<td><h3><%= link_to request.title, request %></h3></td>
+					<td></td>
+					<td><h2><%= Impression.where(impressionable_id: request).count %></h2></td>
+			</tr>
+				<% end %>
+			</table>
+		</div>
+</div>

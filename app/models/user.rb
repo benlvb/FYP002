@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
 
   has_many :requests, :dependent => :destroy
   has_many :comments, :dependent => :destroy
-  has_many :impressions
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
