@@ -3,7 +3,7 @@
 
 		<div class="navbar-header page-scroll">
             <div class="navbar-brand">
-            	<%= link_to "UTeM Rental Marketplace", root_path %>
+            	<%= link_to "Shopurous", root_path %>
             </div>
         </div>
 
@@ -22,29 +22,29 @@
             	<li>
                     <%= link_to 'Home', root_path %>
                 </li>
-            	<li>
-            		<%= link_to 'New Request', new_request_path %>
-            	</li>
                 <li>
                     <%= link_to 'About', about_path %>
                 </li>
                 <li>
                     <%= link_to 'Contact', contact_path %>
                 </li>
-                <li>
-                    <%= link_to 'Admin Panel', panel_path %> 
-                </li>
-                <li>
-                    <%= link_to 'Dashboard', dashboard_path %>
-                </li>	 
             	<% if !user_signed_in? %>
                 	<li>
 						<%= link_to 'Sign Up', new_user_registration_path %>
-					</li>
-					<li>
-						<%= link_to 'Sign In', new_user_session_path %>
-					</li>
-				<% else %>
+        					</li>
+        					<li>
+        						<%= link_to 'Sign In', new_user_session_path %>
+        					</li> 
+				    <% else %>
+            <li>
+                <%= link_to 'New Request', new_request_path %>
+            </li>
+            <li>
+                <%= link_to 'Admin Panel', panel_path %> 
+            </li>
+            <li>
+                <%= link_to 'Dashboard', dashboard_path %>
+            </li>   
 					<li>
 					<%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
 					</li>
