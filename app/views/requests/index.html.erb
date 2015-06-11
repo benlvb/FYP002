@@ -1,67 +1,71 @@
-<% if !user_signed_in? %>
-	<!-- <p id="intro">
-		Hi Stranger!
-		<br />
-		<span>
-			Sign up or Sign in to check out more!
-		</span>
-	</p> -->
-  <div id="carousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel" data-slide-to="1"></li>
-    <li data-target="#carousel" data-slide-to="2"></li>
-  </ol>
+<div class="container-fluid"> 
+  <div class="row">
+    <% if !user_signed_in? %>
+    	<!-- <p id="intro">
+    		Hi Stranger!
+    		<br />
+    		<span>
+    			Sign up or Sign in to check out more!
+    		</span>
+    	</p> -->
+      <div id="carousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel" data-slide-to="1"></li>
+        <li data-target="#carousel" data-slide-to="2"></li>
+      </ol>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="marketplace3.jpg">
-      <!-- <div class="carousel-caption">
-        Happy
-      </div> -->
-    </div>
-    <div class="item">
-      <img src="marketplace5.jpg">
-      <!-- <div class="carousel-caption">
-        Happy
-      </div> -->
-    </div>
-    <div class="item">
-      <img src="marketplace6.jpg">
-      <!-- <div class="carousel-caption">
-        Happy
-      </div> -->
-    </div>
-  </div>
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="marketplace3.jpg">
+          <!-- <div class="carousel-caption">
+            Happy
+          </div> -->
+        </div>
+        <div class="item">
+          <img src="marketplace5.jpg">
+          <!-- <div class="carousel-caption">
+            Happy
+          </div> -->
+        </div>
+        <div class="item">
+          <img src="marketplace6.jpg">
+          <!-- <div class="carousel-caption">
+            Happy
+          </div> -->
+        </div>
+      </div>
 
-  <!-- Controls -->
+      <!-- Controls -->
+      
+    </div>
+
+    <br />
   
+    <% else %>
+    	<p id="intro">
+    		Hello <%= current_user.name %>
+    		<br />
+    		<span>
+    			Get something interesting or even sell something!
+    		</span>
+    	</p>
+    		<div id='requests' class= 'transitions-enabled'>
+    			<% @requests.each do |request| %>
+    				<div class="box panel panel-default">
+    					<%= link_to (image_tag request.images.first.content.url(:medium)), request %>
+    					<div class="panel-body">
+    						<h2><%= link_to request.title, request %></h2>
+    						<p>Submitted by <%= request.user.name %></p>
+    						<p><%= request.comments.count %> Comments</p>
+    						<p><%= request.get_upvotes.size %> Likes</p>
+    						<p><%= request.get_downvotes.size %> Likes</p>
+    					</div>
+    				</div>
+    			<% end %>
+    		</div>
+    <% end %>
+  </div>
 </div>
-
-<br />
-
-<% else %>
-	<p id="intro">
-		Hello <%= current_user.name %>
-		<br />
-		<span>
-			Get something interesting or even sell something!
-		</span>
-	</p>
-		<div id='requests' class= 'transitions-enabled'>
-			<% @requests.each do |request| %>
-				<div class="box panel panel-default">
-					<%= link_to (image_tag request.images.first.content.url(:medium)), request %>
-					<div class="panel-body">
-						<h2><%= link_to request.title, request %></h2>
-						<p>Submitted by <%= request.user.name %></p>
-						<p><%= request.comments.count %> Comments</p>
-						<p><%= request.get_upvotes.size %> Likes</p>
-						<p><%= request.get_downvotes.size %> Likes</p>
-					</div>
-				</div>
-			<% end %>
-		</div>
-<% end %>
