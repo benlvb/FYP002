@@ -6,7 +6,7 @@ class PagesController < ApplicationController
 	end
 
 	def panel
-		@impressions = Impression.all.order("created_at DESC")
+		@impressions = Impression.all
 		# @impression = Impression.where
 		@requests = Request.all
     
