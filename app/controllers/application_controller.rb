@@ -16,11 +16,4 @@ class ApplicationController < ActionController::Base
   	devise_parameter_sanitizer.for(:account_update) << :name
   end
 
-  # def require_admin
-  #   unless current_user && current_user.role == 1
-  #     redirect_to root_path, notice: "You must be an admin to access this page"
-  #     return false
-  #   end
-  # end
-
 end
