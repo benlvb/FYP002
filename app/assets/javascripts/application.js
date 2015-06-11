@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require_tree .
 //= require masonry/jquery.masonry
 //= require bootstrap-sprockets
-//= require_tree .
 //= require jquery_nested_form
 //= require chartkick
