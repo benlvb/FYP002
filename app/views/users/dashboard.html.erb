@@ -1,0 +1,9 @@
+<% @requests.each do |request| %>
+	<%= link_to (image_tag request.images.first.content.url(:small)), request %>
+	<h2><%= link_to request.title, request %></h2>
+	<p><%= request.comments.count %> Comments</p>
+	<p><%= request.get_upvotes.size %> Likes</p>
+	<p><%= request.get_downvotes.size %> Likes</p>
+<% end %>
+
+<%= line_chart @requests.group_by_day(:created_at).count %>

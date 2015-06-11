@@ -27,6 +27,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def dashboard
+    @requests = Request.where(:user_id => current_user)
+  end
+
   # GET/PATCH /users/:id/finish_signup
   def finish_signup
     # authorize! :update, @user 

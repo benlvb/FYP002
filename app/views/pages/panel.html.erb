@@ -1,9 +1,9 @@
+<%= line_chart @impressions.group_by_day(:created_at).count %>
 <h1><%= @impressions.all.count %> of Visits</h1>
 <% @impressions.each do |impression| %>
 
 	<h3><%= impression.ip_address %></h3>
 	<p>Referrer : <%= impression.referrer %></p>
-	<p>User :  <%= impression.user.name %> </p>
-	<p>Email : <%= impression.user.email %></p>
 	<p>How long : <%= impression.created_at %></p>
+
 <% end %>

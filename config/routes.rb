@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   get '/contact', to: 'pages#contact'
   get '/panel', to: 'pages#panel'
 
+  get '/dashboard', to: 'users#dashboard'
+
 end
