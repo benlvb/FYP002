@@ -8,8 +8,11 @@
 				<p><%= request.get_upvotes.size %> Likes</p>
 				<p><%= request.get_downvotes.size %> Likes</p>
 			</div>
-			<div class='col-md-8 col-xs-12'>
+			<div class='col-md-6 col-xs-12'>
 				<%= line_chart Impression.where(impressionable_id: request).group_by_day(:created_at).count %>
+			</div>
+			<div class="col-md-2 dashboard_no">
+				<h1><%= Impression.where(impressionable_id: request).count %></h1>
 			</div>
 		</div>
 	
