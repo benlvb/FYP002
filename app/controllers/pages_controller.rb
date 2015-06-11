@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+	 # before_filter :require_admin, only: [:panel, :traffic]
 	def about
 	end
 
