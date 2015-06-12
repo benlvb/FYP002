@@ -2,7 +2,8 @@ class RequestsController < ApplicationController
 before_action :find_request, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 before_action :authenticate_user!, except: [:index, :show]
 skip_before_filter :verify_authenticity_token
-impressionist :actions=>[:show,:index]
+impressionist 
+# :actions=>[:show,:index]
 
 	def index
 		if params[:category].blank?
