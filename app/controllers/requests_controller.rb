@@ -2,6 +2,7 @@ class RequestsController < ApplicationController
 before_action :find_request, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 before_action :authenticate_user!, except: [:index, :show]
 skip_before_filter :verify_authenticity_token
+before_filter :set_twitter, only: [:create]
 impressionist 
 # :actions=>[:show,:index]
 
@@ -24,6 +25,15 @@ impressionist
 		impressionist(@request)
 	end
 
+	def set_twitter
+		@client = Twitter::REST::Client.new do |config|
+		  config.consumer_key        = ENV["TWITTERCONSUMERKEY"]
+		  config.consumer_secret     = ENV["TWITTERCONSUMERSECRET"]
+		  config.access_token        = ENV["TWITTERACCESSTOKEN"]
+		  config.access_token_secret = ENV["TWITTERACCESSTOKENSECRET"]
+		end
+	end
+
 	def new
 		@request = current_user.requests.build
 	end
@@ -32,6 +42,9 @@ impressionist
 		@request = Request.new(requests_params)
 		@request.user = current_user
 		if @request.save
+			url = request_url(@request)
+			message = "#{@request.title} - "+"#{@request.description} - "+"##{@request.keyword} - "+"#shopurous"+url
+			@send_tweet = @client.update(message) unless message == nil
 			redirect_to @request, flash: { success: 'Request has been created!' }
 		else
 			render 'new'
@@ -69,7 +82,7 @@ impressionist
 	private
 
 	def requests_params
-		params.require(:request).permit(:title, :matric_no, :phone_no, :rate, :description, :address, :longitude, :latitude, :category_id, images_attributes:[:id, :content, :_destroy])
+		params.require(:request).permit(:title, :matric_no, :phone_no, :rate, :description, :address, :keyword, :longitude, :latitude, :category_id, images_attributes:[:id, :content, :_destroy])
 	end
 
 	def find_request

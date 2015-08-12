@@ -26,6 +26,8 @@ gem 'impressionist'
 gem 'geocoder'
 gem 'groupdate'
 gem 'chartkick'
+gem 'twitter'
+gem 'instagram'
 
 group :development, :test do
   gem 'mysql2'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150607065033) do
+ActiveRecord::Schema.define(version: 20150729130754) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20150607065033) do
 
   create_table "impressions", force: :cascade do |t|
     t.string   "impressionable_type", limit: 255
-    t.integer  "impressionable_id",   limit: 4
+    t.integer  "impressionable_id",   limit: 4,     default: 7
     t.integer  "user_id",             limit: 4
     t.string   "controller_name",     limit: 255
     t.string   "action_name",         limit: 255
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20150607065033) do
     t.float    "latitude",    limit: 24
     t.float    "longitude",   limit: 24
     t.string   "address",     limit: 255
+    t.string   "keyword",     limit: 255
   end
 
   create_table "users", force: :cascade do |t|
@@ -107,7 +108,6 @@ ActiveRecord::Schema.define(version: 20150607065033) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name",                   limit: 255
-    t.integer  "role",                   limit: 4,   default: 0,  null: false
     t.string   "confirmation_token",     limit: 255
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"

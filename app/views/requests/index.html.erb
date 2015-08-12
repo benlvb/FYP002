@@ -49,21 +49,23 @@
     		Hello <%= current_user.name %>
     		<br />
     		<span>
-    			Get something interesting or even sell something!
+    			Get something interesting or even sell something! Shop with Shoupurous!
     		</span>
     	</p>
     		<div id='requests' class= 'transitions-enabled'>
     			<% @requests.each do |request| %>
-    				<div class="box panel panel-default">
-    					<%= link_to (image_tag request.images.first.content.url(:medium)), request %>
-    					<div class="panel-body">
-    						<h2><%= link_to request.title, request %></h2>
-    						<p>Submitted by <%= request.user.name %></p>
-    						<p><%= request.comments.count %> Comments</p>
-    						<p><%= request.get_upvotes.size %> Likes</p>
-    						<p><%= request.get_downvotes.size %> Likes</p>
-    					</div>
-    				</div>
+            <% if request.images.present? %>
+      				<div class="box panel panel-default">
+      					<%= link_to (image_tag request.images.first.content.url(:medium)), request %>
+      					<div class="panel-body">
+      						<h2><%= link_to request.title, request %></h2>
+      						<p>Submitted by <%= request.user.name %></p>
+      						<p><%= request.comments.count %> Comments</p>
+      						<p><%= request.get_upvotes.size %> Likes</p>
+      						<p><%= request.get_downvotes.size %> Likes</p>
+      					</div>
+      				</div>
+            <% end %>
     			<% end %>
     		</div>
     <% end %>
