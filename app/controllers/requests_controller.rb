@@ -20,7 +20,8 @@ impressionist
 		@category = Category.find(Request.find(params[:id]).category_id)
 		@comments = Comment.where(request_id: @request)
 		@images = @request.images
-		@random_request = Request.where.not(id: @request).order("random()").first
+		@random_request = Request.where.not(id: @request).order("rand()").first
+		# @highestlike_request = Request.where.not(id: @request).count
 		@request = Request.find(params[:id])
 		impressionist(@request)
 	end
@@ -43,7 +44,7 @@ impressionist
 		@request.user = current_user
 		if @request.save
 			url = request_url(@request)
-			message = "#{@request.title} - "+"#{@request.description} - "+"##{@request.keyword} - "+"#shopurous"+url
+			message = "#{@request.title} - "+"#{@request.description} - "+"##{@request.keyword} - "+"#shopurous - "+url
 			@send_tweet = @client.update(message) unless message == nil
 			redirect_to @request, flash: { success: 'Request has been created!' }
 		else
