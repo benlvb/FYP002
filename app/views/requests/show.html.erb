@@ -42,32 +42,36 @@
         <div class="fb-like" data-href="https://www.facebook.com/shopurous" data-width="30" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
       </p>
     </div>
+  
+    <% if @request == @highestlike_request %>
+      <% @highestlike_request = Request.all.order("likes DESC").second %>
+    <% end %>
 
     <div class="col-md-4" id="random_request">
       <h3>Recommendation</h3>
       <div class="request">
         <div class="request_image">
-          <%= link_to (image_tag @random_request.images.first.content.url(:medium)), request_path(@random_request) %>
+          <%= link_to (image_tag @highestlike_request.images.first.content.url(:medium)), request_path(@highestlike_request) %>
         </div>
         <div class="request_content">
           <div class="title">
             <h2>
-              <%= link_to @random_request.title, request_path(@random_request) %>
+              <%= link_to @highestlike_request.title, request_path(@highestlike_request) %>
             </h2>
           </div>
           <div class="data clearfix">
             <p class="username">
               Submitted by
-              <%= @random_request.user.name %>
+              <%= @highestlike_request.user.name %>
             </p>
             <p class="buttons">
               <span>
                 <i class="fa fa-comments-o"></i>
-                <%= @random_request.comments.count %>
+                <%= @highestlike_request.comments.count %>
               </span>
               <span>
                 <i class="fa fa-thumbs-o-up"></i>
-                <%= @random_request.get_likes.size %>
+                <%= @highestlike_request.get_likes.size %>
               </span>
             </p>
           </div>
