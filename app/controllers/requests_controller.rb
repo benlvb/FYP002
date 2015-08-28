@@ -20,17 +20,11 @@ impressionist
 		@category = Category.find(Request.find(params[:id]).category_id)
 		@comments = Comment.where(request_id: @request)
 		@images = @request.images
-		# @random_request = Request.where.not(id: @request).order("rand()").first
 		@highestlike_request = Request.all.order("likes DESC").first 
 		@request = Request.find(params[:id])
 		impressionist(@request)
 	end
 
-	 # if @highestlike_request = Request.where.not(id: @request) 
-  #      @highestlike_request = Request.all.order("likes DESC").first 
-  #    else 
-  #      @highestlike_request = Request.all.order("likes DESC").second 
-  #     end 
 
 	def set_twitter
 		@client = Twitter::REST::Client.new do |config|
